@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Departments · Apollonia Dental Practice</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <header class="topbar">
+        <div class="brand">Apollonia <span>Dental Practice</span></div>
+        <nav aria-label="Main">
+            <a href="/" aria-current="page">Departments</a>
+            <a href="/employees.html">Employees</a>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Departments</h1>
+        <p id="message" class="message" aria-live="polite"></p>
+
+        <div class="layout">
+            <section class="panel">
+                <h2 id="dept-form-title">Add a department</h2>
+                <form id="dept-form" novalidate>
+                    <input type="hidden" id="dept-id">
+                    <label for="dept-name">Name</label>
+                    <input id="dept-name" name="name" required maxlength="80" autocomplete="off">
+                    <label for="dept-description">Description <span class="hint">(optional)</span></label>
+                    <input id="dept-description" name="description" maxlength="200" autocomplete="off">
+                    <div class="actions">
+                        <button type="submit" id="dept-submit">Add department</button>
+                        <button type="button" id="dept-cancel" class="secondary" hidden>Cancel</button>
+                    </div>
+                </form>
+
+                <h2>All departments</h2>
+                <ul id="dept-list" class="list"></ul>
+            </section>
+
+            <section class="panel">
+                <h2 id="staff-title">Staff</h2>
+                <p id="staff-hint" class="hint">Select a department to see its staff.</p>
+                <ul id="staff-list" class="list"></ul>
+            </section>
+        </div>
+    </main>
+
+    <script src="/js/api.js"></script>
+    <script src="/js/departments.js"></script>
+</body>
+</html>

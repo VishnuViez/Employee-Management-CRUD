@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employees · Apollonia Dental Practice</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <header class="topbar">
+        <div class="brand">Apollonia <span>Dental Practice</span></div>
+        <nav aria-label="Main">
+            <a href="/">Departments</a>
+            <a href="/employees.html" aria-current="page">Employees</a>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Employees</h1>
+        <p id="message" class="message" aria-live="polite"></p>
+
+        <div class="layout">
+            <section class="panel">
+                <h2 id="emp-form-title">Add an employee</h2>
+                <form id="emp-form" novalidate>
+                    <input type="hidden" id="emp-id">
+                    <label for="emp-first">First name</label>
+                    <input id="emp-first" name="firstName" required maxlength="60" autocomplete="off">
+                    <label for="emp-last">Last name</label>
+                    <input id="emp-last" name="lastName" required maxlength="60" autocomplete="off">
+                    <fieldset>
+                        <legend>Departments</legend>
+                        <div id="emp-depts" class="checks"></div>
+                    </fieldset>
+                    <div class="actions">
+                        <button type="submit" id="emp-submit">Add employee</button>
+                        <button type="button" id="emp-cancel" class="secondary" hidden>Cancel</button>
+                    </div>
+                </form>
+            </section>
+
+            <section class="panel wide">
+                <div class="panel-head">
+                    <h2>Staff list</h2>
+                    <label class="inline">Show
+                        <select id="filter">
+                            <option value="">All departments</option>
+                        </select>
+                    </label>
+                </div>
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr><th scope="col">Name</th><th scope="col">Departments</th><th scope="col"><span class="sr-only">Actions</span></th></tr>
+                        </thead>
+                        <tbody id="emp-rows"></tbody>
+                    </table>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script src="/js/api.js"></script>
+    <script src="/js/employees.js"></script>
+</body>
+</html>

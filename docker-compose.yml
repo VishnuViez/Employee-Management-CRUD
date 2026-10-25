@@ -1,0 +1,29 @@
+services:
+  # The Node.js web app (built from the Dockerfile in this folder)
+  app:
+    build: .
+    ports:
+      # <port on your computer>:<port inside the container>
+      - "${NODE_LOCAL_PORT:-3020}:3020"
+    environment:
+      - NODE_LOCAL_PORT=3020
+      # "mongo" is the service name below: containers find each other by name
+      - MONGO_URL=mongodb://mongo:27017/apollonia
+    depends_on:
+      mongo:
+        condition: service_healthy
+    restart: on-failure
+
+  # The MongoDB database (official image)
+  mongo:
+    image: mongo:7
+    volumes:
+      - mongo-data:/data/db   # keeps the data when containers are removed
+    healthcheck:
+      test: ["CMD", "mongosh", "--quiet", "--eval", "db.adminCommand('ping')"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  mongo-data:
